@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     RadioButton PizzaType,hawaiian, hamAndCheese, Size, Crust;
-
-
     CheckBox Tomato, Onion, Pineapple, ExtraCheese, Mushroom;
     Button Process, NewOrder;
     TextView Summary;
