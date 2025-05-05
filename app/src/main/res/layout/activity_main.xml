@@ -1,145 +1,263 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!-- Title -->
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Galaxy Pizza"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center" />
 
-        <TextView
+    <!-- Pizza Type Label -->
+    <TextView
+        android:id="@+id/PizzaTypeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Pizza Type:"
+        app:layout_constraintTop_toBottomOf="@id/Title"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp" />
 
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Galaxy Pizza"
-            android:textSize="24sp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="#FFFFFFF"/>
-        <!-- Pizza Type -->
-        <TextView
+    <!-- Left Image -->
+
+    <!-- Right Image -->
+
+    <!-- Hawaiian Radio -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="113dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/avatar1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/PizzaTypeLabel" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="113dp"
+        android:layout_height="108dp"
+        android:layout_marginEnd="56dp"
+        android:src="@drawable/avatar2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imageView" />
+
+    <RadioButton
+        android:id="@+id/Hawaiian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hawaiian"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="@id/imageView"
+        android:layout_marginTop="4dp" />
+
+    <!-- Ham and Cheese Radio -->
+
+    <!-- Size Label -->
+    <RadioButton
+        android:id="@+id/HamAndCheese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Ham and Cheese"
+        app:layout_constraintStart_toStartOf="@id/imageView2"
+        app:layout_constraintTop_toBottomOf="@id/imageView2" />
+
+    <!-- Size Radio Group -->
+
+    <!-- Crust Label -->
+
+    <!-- Crust Radio Group -->
+
+    <!-- Toppings Label -->
+
+    <!-- Toppings CheckBoxes -->
+
+    <!-- Buttons -->
+    <CheckBox
+        android:id="@+id/Pineapple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Pineapple (₱15.00)"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Mushroom" />
+
+    <TextView
+        android:id="@+id/SizeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:text="Select Size:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Hawaiian" />
+
+    <TextView
+        android:id="@+id/ToppingsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="56dp"
+        android:text="Extra Toppings:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Size" />
+
+    <TextView
+        android:id="@+id/CrustLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:text="Select Crust Type:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/SizeLabel" />
+
+    <CheckBox
+        android:id="@+id/ExtraCheese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="Extra Cheese (₱20.00)"
+        app:layout_constraintStart_toEndOf="@id/Mushroom"
+        app:layout_constraintTop_toTopOf="@id/Mushroom" />
+
+    <RadioGroup
+        android:id="@+id/Size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/SizeLabel">
+
+        <RadioButton
+            android:id="@+id/Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Pizza Type:" />
-        <RadioGroup
-            android:id="@+id/PizzaType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <RadioButton
-                android:id="@+id/Hawaiian"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hawaiian" />
-            <RadioButton
-                android:id="@+id/HamAndCheese"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ham and Cheese" />
-        </RadioGroup>
+            android:text="Small" />
 
-        <!-- Pizza Size -->
-        <TextView
+        <RadioButton
+            android:id="@+id/Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Size:" />
-        <RadioGroup
-            android:id="@+id/Size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <RadioButton
-                android:id="@+id/Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Small" />
-            <RadioButton
-                android:id="@+id/Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Medium" />
-            <RadioButton
-                android:id="@+id/Large"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Large" />
-        </RadioGroup>
+            android:text="Medium" />
 
-        <!-- Crust Type -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select Crust Type:" />
-        <RadioGroup
-            android:id="@+id/Crust"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <RadioButton
-                android:id="@+id/Thin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thin" />
-            <RadioButton
-                android:id="@+id/Thick"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thick" />
-        </RadioGroup>
+    </RadioGroup>
 
-        <!-- Toppings -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Extra Toppings:" />
-        <CheckBox
-            android:id="@+id/Tomato"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tomatoes (₱10.00)" />
-        <CheckBox
-            android:id="@+id/Onion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Onions (₱10.00)" />
-        <CheckBox
-            android:id="@+id/Pineapple"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pineapple (₱15.00)" />
-        <CheckBox
-            android:id="@+id/Mushroom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mushrooms (₱20.00)" />
+    <CheckBox
+        android:id="@+id/Tomato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="Tomatoes (₱10.00)"
+        app:layout_constraintStart_toEndOf="@id/Onion"
+        app:layout_constraintTop_toTopOf="@id/Onion" />
 
-        <CheckBox
-            android:id="@+id/ExtraCheese"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Extra Cheese (₱20.00)" />
+    <RadioGroup
+        android:id="@+id/Crust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/CrustLabel">
 
-        <!-- Buttons -->
-        <Button
-            android:id="@+id/Process"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="PROCESS ORDER"
-            android:layout_marginTop="16dp" />
+    </RadioGroup>
 
-        <Button
-            android:id="@+id/NewOrder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="NEW ORDER"
-            android:layout_marginTop="8dp" />
+    <CheckBox
+        android:id="@+id/Onion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Onions (₱10.00)"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ToppingsLabel" />
 
-        <TextView
-            android:id="@+id/Summary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:paddingTop="16dp"
-            android:textSize="16sp" />
-    </LinearLayout>
-</ScrollView>
+    <CheckBox
+        android:id="@+id/Mushroom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Mushrooms (₱20.00)"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Onion" />
+
+    <Button
+        android:id="@+id/Process"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="PROCESS ORDER"
+        app:layout_constraintTop_toBottomOf="@id/Pineapple"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/NewOrder"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"/>
+
+    <Button
+        android:id="@+id/NewOrder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="NEW ORDER"
+        app:layout_constraintTop_toTopOf="@id/Process"
+        app:layout_constraintStart_toEndOf="@id/Process"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp" />
+
+    <!-- Summary -->
+    <TextView
+        android:id="@+id/Summary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/Process"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="16dp" />
+
+    <RadioButton
+        android:id="@+id/Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Large"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="341dp" />
+
+    <RadioButton
+        android:id="@+id/Thick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thick"
+        tools:layout_editor_absoluteX="262dp"
+        tools:layout_editor_absoluteY="352dp" />
+
+    <RadioButton
+        android:id="@+id/Thin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thin"
+        tools:layout_editor_absoluteX="262dp"
+        tools:layout_editor_absoluteY="299dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
