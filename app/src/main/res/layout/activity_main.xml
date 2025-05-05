@@ -121,11 +121,34 @@
         android:id="@+id/CrustLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
         android:text="Select Crust Type:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/SizeLabel" />
+
+    <RadioGroup
+        android:id="@+id/Crust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/CrustLabel">
+
+        <RadioButton
+            android:id="@+id/Thin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thin" />
+
+        <RadioButton
+            android:id="@+id/Thick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thick" />
+    </RadioGroup>
 
     <CheckBox
         android:id="@+id/ExtraCheese"
@@ -170,18 +193,6 @@
         android:text="Tomatoes (₱10.00)"
         app:layout_constraintStart_toEndOf="@id/Onion"
         app:layout_constraintTop_toTopOf="@id/Onion" />
-
-    <RadioGroup
-        android:id="@+id/Crust"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="4dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/CrustLabel">
-
-    </RadioGroup>
 
     <CheckBox
         android:id="@+id/Onion"
@@ -241,23 +252,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Large"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="341dp" />
-
-    <RadioButton
-        android:id="@+id/Thick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Thick"
-        tools:layout_editor_absoluteX="262dp"
-        tools:layout_editor_absoluteY="352dp" />
-
-    <RadioButton
-        android:id="@+id/Thin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Thin"
-        tools:layout_editor_absoluteX="262dp"
-        tools:layout_editor_absoluteY="299dp" />
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="334dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
