@@ -152,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
         orderSummary.append(String.format("VAT (12%%): ₱%.2f\n", vat));
         orderSummary.append(String.format("Total with VAT: ₱%.2f", totalWithVAT));
 
+
         summary.setText(orderSummary.toString());
     }
 
