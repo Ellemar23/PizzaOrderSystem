@@ -5,150 +5,198 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 public class MainActivity extends AppCompatActivity {
 
-    RadioButton PizzaType,hawaiian, hamAndCheese, Size, Crust;
-    CheckBox Tomato, Onion, Pineapple, ExtraCheese, Mushroom;
-    Button Process, NewOrder;
-    TextView Summary;
+    RadioButton hawaiian, hamAndCheese;
+    RadioButton small, medium, large;
+    RadioButton thin, thick;
+    RadioButton pwdSenior;
+
+    CheckBox onion, tomato, mushroom, extraCheese, pineapple;
+
+    Button processOrder, newOrder;
+    TextView summary;
+
+    RadioGroup sizeGroup, crustGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PizzaType = findViewById(R.id.PizzaType);
+        // Pizza type
         hawaiian = findViewById(R.id.Hawaiian);
         hamAndCheese = findViewById(R.id.HamAndCheese);
-        Size = findViewById(R.id.Size);
-        Crust = findViewById(R.id.Crust);
 
-        Tomato = findViewById(R.id.TomatoOnion);
-        Onion= findViewById(R.id.Onion);
-        Pineapple = findViewById(R.id.Pineapple);
-        ExtraCheese = findViewById(R.id.ExtraCheese);
-        Mushroom = findViewById(R.id.ExtraCheeseMushroom);
+        // Size group
+        small = findViewById(R.id.Small);
+        medium = findViewById(R.id.Medium);
+        large = findViewById(R.id.Large);
 
-        Process = findViewById(R.id.Process);
-        NewOrder = findViewById(R.id.NewOrder);
-        Summary = findViewById(R.id.Summary);
+        // Crust group
+        thin = findViewById(R.id.Thin);
+        thick = findViewById(R.id.Thick);
 
-        Process.setOnClickListener(view -> processOrder());
-        NewOrder.setOnClickListener(view -> resetForm());
+        // Toppings
+        onion = findViewById(R.id.Onion);
+        tomato = findViewById(R.id.Tomato);
+        mushroom = findViewById(R.id.Mushroom);
+        extraCheese = findViewById(R.id.ExtraCheese);
+        pineapple = findViewById(R.id.Pineapple);
+
+        // Discount
+        pwdSenior = findViewById(R.id.radioButtonPwdSenior);
+
+        // Buttons and summary
+        processOrder = findViewById(R.id.Process);
+        newOrder = findViewById(R.id.NewOrder);
+        summary = findViewById(R.id.Summary);
+
+        // Button listeners
+        processOrder.setOnClickListener(v -> processOrder());
+        newOrder.setOnClickListener(v -> resetForm());
+
+        hawaiian.setOnClickListener(v -> {
+            if (hawaiian.isChecked()) {
+                hamAndCheese.setChecked(false);
+            }
+        });
+        hamAndCheese.setOnClickListener(v -> {
+            if (hamAndCheese.isChecked()) {
+                hawaiian.setChecked(false);
+            }
+        });
+
+        small.setOnClickListener(v -> {
+            if (small.isChecked()) {
+                medium.setChecked(false);
+                large.setChecked(false);
+            }
+        });
+        medium.setOnClickListener(v -> {
+            if (medium.isChecked()) {
+                small.setChecked(false);
+                large.setChecked(false);
+            }
+        });
+        large.setOnClickListener(v -> {
+            if (large.isChecked()) {
+                small.setChecked(false);
+                medium.setChecked(false);
+            }
+        });
+
+        thin.setOnClickListener(v -> {
+            if (thin.isChecked()) {
+                thick.setChecked(false);
+            }
+            });
+        thick.setOnClickListener(v -> {
+            if (thick.isChecked()) {
+                thin.setChecked(false);
+            }
+        });
+
     }
 
     private void processOrder() {
-        String pizzaType = "";
-        int basePrice = 0;
+        StringBuilder orderSummary = new StringBuilder();
+        double subtotal = 0;
 
-        int selectedPizza = PizzaType.getCheckedRadioButtonId();
-        if (selectedPizza == R.id.Hawaiian) {
-            pizzaType = "Hawaiian";
-        } else if (selectedPizza == R.id.HamCheese) {
-            pizzaType = "Ham & Cheese";
+        // Pizza type
+        if (hawaiian.isChecked()) {
+            orderSummary.append("Pizza: Hawaiian\n");
+            subtotal += 150;
+        } else if (hamAndCheese.isChecked()) {
+            orderSummary.append("Pizza: Ham and Cheese\n");
+            subtotal += 140;
         } else {
-            Toast.makeText(this, "Please select a pizza type.", Toast.LENGTH_SHORT).show();
+            showToast("Please select a pizza type.");
             return;
         }
 
-        String size = "";
-
-
-        if (Size.getCheckedRadioButtonId() == R.id.Small) {
-            size = "Small";
-            if (pizzaType.equals("Hawaiian")) {
-                basePrice = 100;
-            } else if (pizzaType.equals("Ham & Cheese")) {
-                basePrice = 200;
-            }
-
-        } else if (Size.getCheckedRadioButtonId() == R.id.Medium) {
-            size = "Medium";
-            if (pizzaType.equals("Hawaiian")) {
-                basePrice = 150;
-            } else if (pizzaType.equals("Ham & Cheese")) {
-                basePrice = 300;
-            }
-        } else if (Size.getCheckedRadioButtonId() == R.id.Large) {
-            size = "Large";
-            if (pizzaType.equals("Hawaiian")) {
-                basePrice = 200;
-            } else if (pizzaType.equals("Ham & Cheese")) {
-                basePrice = 400;
-            }
+        // Size
+        if (small.isChecked()) {
+            orderSummary.append("Size: Small\n");
+        } else if (medium.isChecked()) {
+            orderSummary.append("Size: Medium (+₱20)\n");
+            subtotal += 20;
+        } else if (large.isChecked()) {
+            orderSummary.append("Size: Large (+₱40)\n");
+            subtotal += 40;
         } else {
-            Toast.makeText(this, "Please select a pizza size.", Toast.LENGTH_SHORT).show();
+            showToast("Please select a size.");
             return;
         }
 
         // Crust
-        String crust = "";
-        if (Crust.getCheckedRadioButtonId() == R.id.Thin) {
-            crust = "Thin";
-        } else if (Crust.getCheckedRadioButtonId() == R.id.Thick) {
-            crust = "Thick";
-            basePrice += basePrice * 0.5;
+        if (thin.isChecked()) {
+            orderSummary.append("Crust: Thin\n");
+        } else if (thick.isChecked()) {
+            orderSummary.append("Crust: Thick (+₱10)\n");
+            subtotal += 10;
         } else {
-            Toast.makeText(this, "Please select a crust type.", Toast.LENGTH_SHORT).show();
+            showToast("Please select a crust.");
             return;
         }
 
         // Toppings
-        StringBuilder toppings = new StringBuilder();
-        int toppingTotal = 0;
-
-        if (Tomato.isChecked()) {
-            toppings.append("Tomatoes & Onions, ");
-            toppingTotal += 10;
+        orderSummary.append("Toppings:\n");
+        if (onion.isChecked()) {
+            orderSummary.append("- Onion (₱10)\n");
+            subtotal += 10;
         }
-        if (Onion.isChecked()) {
-            toppings.append("Tomatoes & Onions, ");
-            toppingTotal += 10;
+        if (tomato.isChecked()) {
+            orderSummary.append("- Tomato (₱10)\n");
+            subtotal += 10;
         }
-        if (Pineapple.isChecked()) {
-            toppings.append("Pineapple, ");
-            toppingTotal += 15;
+        if (mushroom.isChecked()) {
+            orderSummary.append("- Mushroom (₱20)\n");
+            subtotal += 20;
         }
-        if (ExtraCheese.isChecked()) {
-            toppings.append("Extra Cheese & Mushrooms, ");
-            toppingTotal += 20;
+        if (extraCheese.isChecked()) {
+            orderSummary.append("- Extra Cheese (₱20)\n");
+            subtotal += 20;
         }
-        if (Mushroom.isChecked()) {
-            toppings.append("Mushrooms, ");
-            toppingTotal += 10;
+        if (pineapple.isChecked()) {
+            orderSummary.append("- Pineapple (₱15)\n");
+            subtotal += 15;
         }
 
-        if (toppings.length() > 0)
-            toppings.setLength(toppings.length() - 2); // Remove last comma
-        else
-            toppings.append("None");
+        // Discount
+        if (pwdSenior.isChecked()) {
+            orderSummary.append("Discount: PWD/Senior (20%)\n");
+            subtotal *= 0.8;
+        }
 
-        // Final Total
-        int total = basePrice + toppingTotal;
+        // VAT (12%)
+        double vat = subtotal * 0.12;
+        double totalWithVAT = subtotal + vat;
 
-        // Summary
-        String summary = "Pizza: " + pizzaType + "\n"
-                + "Size: " + size + "\n"
-                + "Crust: " + crust + "\n"
-                + "Toppings: " + toppings + "\n"
-                + "Total: ₱" + total;
+        orderSummary.append(String.format("VAT (12%%): ₱%.2f\n", vat));
+        orderSummary.append(String.format("Total with VAT: ₱%.2f", totalWithVAT));
 
-        Summary.setText(summary);
+        summary.setText(orderSummary.toString());
     }
 
     private void resetForm() {
-        PizzaType.clearCheck();
-        Size.clearCheck();
-        Crust.clearCheck();
-        Tomato.setChecked(false);
-        Onion.setChecked(false);
-        Pineapple.setChecked(false);
-        Mushroom.setChecked(false);
-        ExtraCheese.setChecked(false);
-        hawaiian.clearCheck();
-        hamAndCheese.clearCheck();
-        Summary.setText("");
+        sizeGroup.clearCheck();
+        crustGroup.clearCheck();
+
+        hawaiian.setChecked(false);
+        hamAndCheese.setChecked(false);
+        pwdSenior.setChecked(false);
+
+        onion.setChecked(false);
+        tomato.setChecked(false);
+        mushroom.setChecked(false);
+        extraCheese.setChecked(false);
+        pineapple.setChecked(false);
+
+        summary.setText("");
     }
 
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 }

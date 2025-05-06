@@ -1,260 +1,348 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
-    android:fillViewport="true">
+    android:backgroundTint="#0F2027"
+    android:scaleType="fitXY"
+    android:src="@drawable/star" >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-    <!-- Title -->
-    <TextView
-        android:id="@+id/Title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Galaxy Pizza"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text=" Pizza App"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <!-- Pizza Type Label -->
-    <TextView
-        android:id="@+id/PizzaTypeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Pizza Type:"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/Title"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp" />
+        <!-- Pizza Type -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Pizza Type:"
+            android:textColor="#FFFFFF" />
 
-    <!-- Pizza Images -->
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="110dp"
-        android:layout_height="100dp"
-        android:src="@drawable/hawaiian"
-        app:layout_constraintTop_toBottomOf="@id/PizzaTypeLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
-    <!-- Pizza Type Radio Buttons -->
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="110dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="32dp"
-        android:src="@drawable/hamandchesse"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/imageView" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
 
-    <RadioButton
-        android:id="@+id/Hawaiian"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hawaiian"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/imageView"
-        app:layout_constraintStart_toStartOf="@id/imageView" />
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/hawaiian" />
+                <RadioButton
+                    android:id="@+id/Hawaiian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hawaiian"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
 
-    <RadioButton
-        android:id="@+id/HamAndCheese"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ham and Cheese"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/imageView2"
-        app:layout_constraintStart_toStartOf="@id/imageView2" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
 
-    <!-- Size Label -->
-    <TextView
-        android:id="@+id/SizeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Size:"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/Hawaiian"
-        app:layout_constraintStart_toStartOf="parent" />
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/hamandchesse" />
+                <RadioButton
+                    android:id="@+id/HamAndCheese"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ham and Cheese"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
+        </LinearLayout>
 
-    <!-- Size Radio Buttons -->
-    <RadioButton
-        android:id="@+id/Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Small"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/SizeLabel"
-        app:layout_constraintStart_toStartOf="parent" />
+        <!-- Size -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Size:"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="10dp"/>
 
-    <RadioButton
-        android:id="@+id/Medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Medium"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toTopOf="@id/Small"
-        app:layout_constraintStart_toEndOf="@id/Small"
-        android:layout_marginStart="16dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
-    <RadioButton
-        android:id="@+id/Large"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Large"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toTopOf="@id/Medium"
-        app:layout_constraintStart_toEndOf="@id/Medium"
-        android:layout_marginStart="16dp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
 
-    <!-- Crust Label -->
-    <TextView
-        android:id="@+id/CrustLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Crust Type:"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/Small"
-        app:layout_constraintStart_toStartOf="parent" />
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/small_size" />
+                <RadioButton
+                    android:id="@+id/Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Small"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
 
-    <!-- Crust Radio Buttons -->
-    <RadioButton
-        android:id="@+id/Thin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Thin"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/CrustLabel"
-        app:layout_constraintStart_toStartOf="parent" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
 
-    <RadioButton
-        android:id="@+id/Thick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Thick"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toTopOf="@id/Thin"
-        app:layout_constraintStart_toEndOf="@id/Thin"
-        android:layout_marginStart="16dp" />
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/medium_size" />
+                <RadioButton
+                    android:id="@+id/Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medium"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
 
-    <!-- Toppings Label -->
-    <TextView
-        android:id="@+id/ToppingsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Extra Toppings:"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/Thin"
-        app:layout_constraintStart_toStartOf="parent" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
 
-    <!-- CheckBoxes -->
-    <CheckBox
-        android:id="@+id/Onion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Onions (₱10.00)"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/ToppingsLabel"
-        app:layout_constraintStart_toStartOf="parent" />
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/large_size" />
+                <RadioButton
+                    android:id="@+id/Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Large"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
+        </LinearLayout>
 
-    <CheckBox
-        android:id="@+id/Tomato"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tomatoes (₱10.00)"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toTopOf="@id/Onion"
-        app:layout_constraintStart_toEndOf="@id/Onion"
-        android:layout_marginStart="16dp" />
+        <!-- Crust -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Crust Type:"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="10dp"/>
 
-    <CheckBox
-        android:id="@+id/Mushroom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mushrooms (₱20.00)"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/Onion"
-        app:layout_constraintStart_toStartOf="parent" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
-    <CheckBox
-        android:id="@+id/ExtraCheese"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Extra Cheese (₱20.00)"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toTopOf="@id/Mushroom"
-        app:layout_constraintStart_toEndOf="@id/Mushroom"
-        android:layout_marginStart="16dp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
 
-    <CheckBox
-        android:id="@+id/Pineapple"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pineapple (₱15.00)"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/Mushroom"
-        app:layout_constraintStart_toStartOf="parent" />
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/thin_crust" />
+                <RadioButton
+                    android:id="@+id/Thin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thin"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
 
-    <!-- PWD/Senior Option -->
-    <RadioButton
-        android:id="@+id/radioButtonPwdSenior"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PWD / SENIOR"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/Pineapple"
-        app:layout_constraintStart_toStartOf="parent" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
 
-    <!-- Action Buttons -->
-    <Button
-        android:id="@+id/Process"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="PROCESS ORDER"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/radioButtonPwdSenior"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/NewOrder"
-        android:layout_marginEnd="8dp" />
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/thick_crust" />
+                <RadioButton
+                    android:id="@+id/Thick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thick"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/NewOrder"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="NEW ORDER"
-        app:layout_constraintTop_toTopOf="@id/Process"
-        app:layout_constraintStart_toEndOf="@id/Process"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="8dp" />
+        <!-- Toppings -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Extra Toppings:"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="10dp"/>
 
-    <!-- Summary -->
-    <TextView
-        android:id="@+id/Summary"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@id/Process"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <CheckBox
+                android:id="@+id/Onion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Onions (₱10.00)"
+                android:textColor="#FFFFFF"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/onion" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/Tomato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:text="Tomatoes (₱10.00)"
+                android:textColor="#FFFFFF" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/tomato" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/Mushroom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mushrooms (₱20.00)"
+                android:textColor="#FFFFFF"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/mushroom" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/ExtraCheese"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Extra Cheese (₱20.00)"
+                android:textColor="#FFFFFF"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/extra_cheese" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/Pineapple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pineapple (₱15.00)"
+                android:textColor="#FFFFFF"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/pineapple" />
+        </LinearLayout>
+
+        <!-- Discount -->
+        <RadioButton
+            android:id="@+id/radioButtonPwdSenior"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PWD / SENIOR"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="10dp"/>
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/Process"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PROCESS ORDER"
+                android:backgroundTint="#A855F7"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/NewOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NEW ORDER"
+                android:backgroundTint="#A855F7"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+        <!-- Summary -->
+        <TextView
+            android:id="@+id/Summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"/>
+    </LinearLayout>
 </ScrollView>
