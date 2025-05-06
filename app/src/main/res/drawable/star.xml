@@ -1,0 +1,9 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <bitmap
+            android:src="@drawable/stars"
+        android:gravity="center"
+        android:tileMode="repeat"/>
+    </item>
+</layer-list>
