@@ -284,17 +284,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <CheckBox
                 android:id="@+id/Pineapple"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pineapple (₱15.00)"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#FFFFFF" />
+
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
